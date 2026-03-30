@@ -877,7 +877,7 @@ repo_cmd() {
     # '\'''
 
     # KEYBINDINGS      {{{2
-    export GH_FZF_REPO_EDIT_KEY="${GH_FZF_REPO_EDIT_KEY:-enter}"
+    export GH_FZF_REPO_EDIT_KEY="${GH_FZF_REPO_EDIT_KEY:-shift-enter}"
     export GH_FZF_REPO_VIEW_ISSUES_KEY="${GH_FZF_REPO_ISSUES_KEY:-alt-i}"
     export GH_FZF_REPO_VIEW_PRS_KEY="${GH_FZF_REPO_VIEW_PRS_KEY:-alt-p}"
     export GH_FZF_REPO_VIEW_RUNS_KEY="${GH_FZF_REPO_VIEW_RUNS_KEY:-alt-r}"
@@ -902,6 +902,7 @@ $global_binds
         --header="$repo_header" \
         --header-lines=4 \
         --bind="start:${GH_FZF_HIDE_HINTS:+"toggle-header"}" \
+        --bind="enter:become(printf '%s\n' {1})" \
         --bind="$GH_FZF_OPEN_KEY:execute-silent(gh repo view --web {1} &)+refresh-preview" \
         --bind="$GH_FZF_COPY_KEY:execute-silent(gh fzf util copy-url repo {1})+refresh-preview" \
         --bind="$GH_FZF_HELP_KEY:execute(GH_PAGER='less -p \"^  ### Command: .repo\"' gh repo view benelan/gh-fzf)" \
